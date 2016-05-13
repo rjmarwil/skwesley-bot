@@ -11,12 +11,12 @@ post '/gateway' do
   case message
     when 'help', ''
       respond_message "skwesley blink <env> - Show console link to environment\n
-                        skwesley blink_uaa <env> - Show UAA console link to environment\n
-                        skwesley ibmadmin <env> - Grab ibmadmin password from Doctor\n
-                        skwesley ibmuser <env> - Grab ibmuser password from Doctor\n
-                        skwesley vcap <env> - Grab vcap password from Doctor\n
-                        skwesley vcap - Show important vcap commands\n
-                        skwesley envs - List all environments"
+skwesley blink_uaa <env> - Show UAA console link to environment\n
+skwesley ibmadmin <env> - Grab ibmadmin password from Doctor\n
+skwesley ibmuser <env> - Grab ibmuser password from Doctor\n
+skwesley vcap <env> - Grab vcap password from Doctor\n
+skwesley vcap - Show important vcap commands\n
+skwesley envs - List all environments"
     when 'envs'
       environments = envs
       respond_message "#{environments}"
@@ -63,7 +63,7 @@ end
 
 #List all environments
 def envs
-environments="```
+environments="
 +-----------------+-------------------------+\n
 | *Name*            | *Deployment*              |\n
 +-----------------+-------------------------+\n
@@ -126,6 +126,6 @@ environments="```
 | ukpostoffice2   | postofficefot2-eu-fr    |\n
 | wipro           | wipro-as-sg             |\n
 +-----------------+-------------------------+\n
-```"
+"
 return environments
 end
