@@ -11,7 +11,6 @@ post '/gateway' do
   case message
     when 'help', ''
       respond_message "skwesley blink <env> - Show console link to environment
-skwesley blink_uaa <env> - Show UAA console link to environment
 skwesley ibmadmin <env> - Grab ibmadmin password from Doctor
 skwesley ibmuser <env> - Grab ibmuser password from Doctor
 skwesley vcap <env> - Grab vcap password from Doctor
@@ -20,6 +19,8 @@ skwesley envs - List all environments"
     when 'envs'
       environments = envs
       respond_message "#{environments}"
+    when 'blink'
+
     else
       respond_message ""
   end
@@ -33,12 +34,62 @@ end
 
 #Show console link to environment
 def blink environment
+  info = Hash.new
+  info["yp"]="ng"
+  info["lyp"]="eu-gb"
+  info["sydney"]="au-syd"
+  info["ys1"]="stage1.ng"
+  info["lys1"]="stage1.eu-gb"
+  info["ys0"]="stage0.ng"
+  info["lys0"]="stage0.eu-gb"
+  info["abnamro"]="abnamro.eu-nl"
+  info["accenture"]="acn"
+  info["anz"]="anz-blue-art-lab.au-south"
+  info["bendigo"]="ben"
+  info["bpi"]="bpiflashstudio.as-hk"
+  info["capgemini"]="capgemini.eu-gb"
+  info["cio"]="w3ibm"
+  info["cognizant"]="cognizant.as-sg"
+  info["csc"]="csc.us-ne"
+  info["dgt"]="dgt.eu-gb"
+  info["dvla"]="dvla.eu-gb"
+  info["dyf"]="pci.na-south"
+  info["dys0"]="dys0"
+  info["gts"]="ibm-gts.us-south"
+  info["hertz1"]=""
+  info["hertz2"]="c2c.us-west"
+  info["infosys"]="learninfy.as-sg"
+  info["jri"]="smfg-first.as-jp"
+  info["kaiser1"]="kpsj001.us-west"
+  info["kaiser2"]="kpsj002.us-west"
+  info["lloyds"]="lbg.eu-gb"
+  info["monitise"]="moni"
+  info["mutua"]="mutua.eu-gb"
+  info["nab"]="nab.au-south"
+  info["niandc"]="crb.as-jp"
+  info["rbc"]="rbc.ca-east"
+  info["showroom1"]="sr1.us-south"
+  info["showroom2"]="sr2.us-south"
+  info["showroom3"]="sr3.us-south"
+  info["showroom4"]="sr4.as-jp"
+  info["showroom5"]="sr5.eu-gb"
+  info["showroom6"]="sr6.us-south"
+  info["sncf"]="sncf-eva.eu-fr"
+  info["sogeti"]="sogeti.eu-gb"
+  info["talentinsights"]="ibmtalentinsights.ca-east"
+  info["talentinsights2"]="ibmtalentinsights.eu-nl"
+  info["talentinsights3"]="ibmtalentinsights.us-south"
+  info["talentinsights4"]="ibmtalentinsights.eu-it"
+  info["tcs"]="tcs.us-south"
+  info["techmahindra"]="techmahindra.as-sg"
+  info["ukpostoffice1"]="postofficefot.eu-gb"
+  info["ukpostoffice2"]=""
+  info["wipro"]="wipro.as-sg"
 
-end
-
-#Show UAA console link to environment
-def blink_uaa environment
-
+  ace = "https://console.#{info["#{environment}"]}.bluemix.net"
+  ace_uaa = "https://login.#{info["#{environment}"]}.bluemix.net/UAALoginServerWAR/landing?realmid=UAA"
+  return "ACE: #{ace}
+  ACE UAA: #{ace_uaa}"
 end
 
 #Grab ibmadmin password from Doctor
@@ -63,7 +114,7 @@ end
 
 #List all environments
 def envs
-environments="```
+  environments="```
 +-----------------+-------------------------+
 | Name            | Deployment              |
 +-----------------+-------------------------+
@@ -127,5 +178,5 @@ environments="```
 | wipro           | wipro-as-sg             |
 +-----------------+-------------------------+
 ```"
-return environments
+  return environments
 end
