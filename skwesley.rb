@@ -11,7 +11,7 @@ post '/gateway' do
   case message
     when 'help', ''
       respond_message "skwesley blink <env> - Show console link to environment\n
-                        skwesley blink-uaa <env> - Show UAA console link to environment\n
+                        skwesley blink_uaa <env> - Show UAA console link to environment\n
                         skwesley ibmadmin <env> - Grab ibmadmin password from Doctor\n
                         skwesley ibmuser <env> - Grab ibmuser password from Doctor\n
                         skwesley vcap <env> - Grab vcap password from Doctor\n
@@ -37,7 +37,7 @@ def blink environment
 end
 
 #Show UAA console link to environment
-def blink-uaa environment
+def blink_uaa environment
 
 end
 
