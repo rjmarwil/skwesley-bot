@@ -10,12 +10,12 @@ post '/gateway' do
   #Put any new code here
   case message
     when 'help', ''
-      respond_message "skwesley blink <env> - Show console link to environment\n
-skwesley blink_uaa <env> - Show UAA console link to environment\n
-skwesley ibmadmin <env> - Grab ibmadmin password from Doctor\n
-skwesley ibmuser <env> - Grab ibmuser password from Doctor\n
-skwesley vcap <env> - Grab vcap password from Doctor\n
-skwesley vcap - Show important vcap commands\n
+      respond_message "skwesley blink <env> - Show console link to environment
+skwesley blink_uaa <env> - Show UAA console link to environment
+skwesley ibmadmin <env> - Grab ibmadmin password from Doctor
+skwesley ibmuser <env> - Grab ibmuser password from Doctor
+skwesley vcap <env> - Grab vcap password from Doctor
+skwesley vcap - Show important vcap commands
 skwesley envs - List all environments"
     when 'envs'
       environments = envs
